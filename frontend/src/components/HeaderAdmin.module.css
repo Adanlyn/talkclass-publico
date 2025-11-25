@@ -1,0 +1,66 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  padding: 0;              /* a topbar já tem padding lateral */
+  min-height: 0;
+}
+
+.h1 {
+  margin: 0;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #2b231f;
+}
+
+/* empurra os controles para a direita */
+.right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search {
+  width: clamp(180px, 24vw, 280px);
+}
+
+.bell {
+  cursor: pointer;
+}
+
+/* avatar laranja com iniciais em branco */
+.avatar {
+  background: var(--mantine-color-orange-6);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* dropdown do menu do avatar (padding extra opcional) */
+.menuDropdown {
+  padding: 8px 10px;
+}
+
+/* Responsivo: reduzir a busca e exibir burger só em telas menores */
+@media (max-width: 1024px) {
+  .search {
+    width: clamp(140px, 28vw, 220px);
+  }
+}
+
+@media (max-width: 640px) {
+  .search {
+    display: none;
+  }
+}
+
+/* burger (não usado aqui; mantido para compatibilidade com a topbar) */
+.burger {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .burger {
+    display: inline-grid;
+  }
+}

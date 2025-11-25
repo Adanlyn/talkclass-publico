@@ -1,0 +1,242 @@
+:root {
+  --tab-bg: #e8d8cc;                            /* abas normais */
+  --tab-bg-active: var(--mantine-color-sand-3); /* MESMA cor do formulário (aba ativa) */
+    --arrow-color: #f97316;     /* cor padrão (laranja) */
+  --arrow-hover: #ff8a3d;     /* hover */
+  --arrow-disabled: 0.35;      /* opacidade quando desabilitado */
+  --arrow-bg: rgba(0, 0, 0, 0.12); /* fundo do círculo */
+}
+.footer { background: #2b231f; padding: 12px 0; color: #e8dbd2; text-align: center; }
+
+/* ===== HERO (sem linhas) ===== */
+.hero {
+  background: var(--mantine-color-cocoa-9);
+  padding: 56px 0 48px; /* hero mais alto */
+  position: relative;
+  border-bottom: none;
+  box-shadow: none;
+}
+.heroInner { max-width: 760px; margin: 0 auto; text-align: center; }
+.heroTitle { font-size: clamp(28px, 5.5vw, 56px); }
+.subtitle  { margin-top: 12px; }
+
+/* ===== ABAS DE CATEGORIA (estilo pasta) ===== */
+.tabsBar {
+  background: var(--mantine-color-cocoa-9);
+  padding: 8px 0 0;
+  position: relative;
+  z-index: 2;
+  border: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  transform: translateZ(0);
+}
+.tabsBar::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -6px;                  /* cobre a junção com o bloco areia */
+  height: 6px;
+  background: var(--mantine-color-sand-3);
+  pointer-events: none;
+  z-index: 1;
+}
+.tabText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;/* quebra palavras grandes */
+}
+.tabsBar::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: -1px;
+  height: 1px;
+  background: var(--mantine-color-cocoa-9);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tabsScroll {
+  display: flex;
+  flex-wrap: nowrap;  /* 1 linha */
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 8px;
+  overflow-x: auto;   /* permite rolar nas setas */
+  scrollbar-width: none;
+  flex: 1 1 auto;     /* ocupa o espaço entre as setas */
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;  
+}
+.tabsScroll::-webkit-scrollbar { display: none; }
+
+.tab {
+  appearance: none;
+  background: var(--tab-bg);
+  color: #2b231f;
+  border: 1px solid rgba(0,0,0,.14);
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 10px 12px;
+  min-height: 52px;
+  font-weight: 700;
+  font-size: clamp(12px, 1.25vw, 14px);
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  transition: background .15s ease, box-shadow .15s ease, transform .1s ease;
+  box-shadow: none;
+  display: flex;          /* centraliza o texto no botão */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 0 0 auto;
+  min-width: 150px;
+}
+.tab:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(0,0,0,.12); }
+
+.tabActive {
+  background: var(--tab-bg-active);
+  border-color: rgba(0,0,0,.18);
+  box-shadow: 0 8px 16px rgba(0,0,0,.12);
+  margin-bottom: 0;
+  z-index: 3;
+}
+
+/* ===== FORM SECTION ===== */
+.formSection {
+  background: var(--mantine-color-sand-3);
+  padding: 32px 0 56px;
+  position: relative;
+  z-index: 1;
+  border-top: none;
+  box-shadow: none;
+}
+.formWrap { max-width: 720px; margin: 0 auto; }
+.formCard { background: transparent; box-shadow: none; }
+
+/* ===== BLOCO/PERGUNTAS ===== */
+.block { }
+
+/* Likert (Segmented) */
+.likertRoot      { background: #efe7e1; border: 1px solid rgba(0,0,0,.08); }
+.likertIndicator { background: #fff;     box-shadow: 0 2px 10px rgba(0,0,0,.12); }
+.likertLabel     { font-weight: 700; }
+
+/* textarea */
+.textarea { background: #efe7e1; }
+
+/* ===== RÁDIOS ===== */
+.radioGroup { margin-top: 12px; }
+.radioScroll { overflow: visible; }
+.radioRow {
+  display: flex;
+  justify-content: space-evenly;   /* 3 colunas iguais */
+  align-items: center;
+  gap: 0;
+  padding: 6px 2px;
+}
+.radioRow :global(.mantine-Radio-root) {
+  flex: 0 0 33.33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.radioRow :global(.mantine-Radio-inner) {
+  margin-right: 8px;
+}
+.radioRow :global(.mantine-Radio-label) {
+  line-height: 1;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* ===== BREAKPOINTS ===== */
+@media (max-width: 1024px) {
+  .tabsScroll { gap: 10px; }
+  .tab { padding: 8px 12px; font-size: 13px; min-height: 38px; }
+}
+
+@media (max-width: 767px) {
+  .hero { padding: 48px 0 40px; }
+  .heroTitle { font-size: clamp(24px, 7vw, 36px); }
+
+  .tabsScroll {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 2px;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
+  }
+  .tab {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: 10px 14px;
+    font-size: 14px;
+    min-height: 40px;
+    box-shadow: none;
+  }
+
+    .arrowBtn { display: none; }
+
+  .formWrap { max-width: 100%; }
+
+  /* Rádios empilhados no mobile */
+  .radioRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .radioRow :global(.mantine-Radio-root) {
+    flex: 0 0 auto;
+    width: auto;
+  }
+}
+
+/* ===== SETAS ===== */
+.arrowBtn {
+   font-size: 30px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: none;
+  border-radius: 999px;
+
+  color: var(--arrow-color);
+  background: var(--arrow-bg);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+
+  transition: color .15s ease, transform .15s ease, background .15s ease;
+}
+
+.arrowBtn:hover:not(:disabled) { transform: scale(1.06); }
+.arrowBtn:disabled { opacity: var(--arrow-disabled); cursor: not-allowed; }
+.arrowBtn:focus-visible { outline: 2px solid var(--arrow-color); outline-offset: 2px; }
+
+
+/* tamanho e estilo do ícone (quando usa caractere ‹ ›) */
+.arrowIcon {
+  font-size: 22px;       /* tamanho do glifo */
+  line-height: 1;
+  user-select: none;
+}
+
+/* (Opcional) tema escuro claro */
+.dark .arrowBtn { background: rgba(255,255,255,.12); }
+
+.tabsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

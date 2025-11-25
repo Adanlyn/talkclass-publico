@@ -1,0 +1,39 @@
+.modalHeader {
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.modalBody {
+  padding-top: 12px;
+}
+
+/* cada notificação */
+.item {
+  transition: background-color .15s ease, border-color .15s ease;
+}
+
+/* destaque para novas */
+.unread {
+  background: #fff5ee;            /* laranja bem clarinho */
+  border-color: rgba(255, 132, 0, .25);
+}
+
+/* linha principal (título + menu) */
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.main { flex: 1; min-width: 0; }
+
+.title {
+  line-height: 1.2;
+}
+
+/* bloco extra quando expandido */
+.meta {
+  background: #faf9f7;
+  border: 1px dashed rgba(0,0,0,.12);
+}

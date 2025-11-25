@@ -1,0 +1,26 @@
+// dotnet ef migrations add AddIdentificacaoFeedback
+public partial class AddIdentificacaoFeedback : Migration
+{
+    protected override void Up(MigrationBuilder m)
+    {
+        m.AddColumn<string>(
+            name: "NomeIdentificado",
+            table: "feedbacks",
+            type: "character varying(120)",
+            maxLength: 120,
+            nullable: true);
+
+        m.AddColumn<string>(
+            name: "ContatoIdentificado",
+            table: "feedbacks",
+            type: "character varying(160)",
+            maxLength: 160,
+            nullable: true);
+    }
+
+    protected override void Down(MigrationBuilder m)
+    {
+        m.DropColumn(name: "NomeIdentificado", table: "feedbacks");
+        m.DropColumn(name: "ContatoIdentificado", table: "feedbacks");
+    }
+}

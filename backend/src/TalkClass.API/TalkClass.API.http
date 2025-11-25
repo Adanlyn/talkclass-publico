@@ -1,0 +1,6 @@
+@TalkClass.API_HostAddress = http://localhost:5252
+
+GET {{TalkClass.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

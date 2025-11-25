@@ -1,0 +1,48 @@
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node / Vite
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+**/dist-ssr/
+.vite/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# .NET
+**/bin/
+**/obj/
+
+# Python
+**/__pycache__/
+
+# Env / secrets (keep only the .example files)
+.env
+.env.*
+!.env.example
+!**/.env.example
+appsettings.json
+appsettings.Development.json
+appsettings.*.json
+!appsettings.*.example.json
+
+# Database dumps / volumes
+pg-data/
+data/
+backups/
+*.sql
+*.backup
+!**/schema.sql
+!**/schema_*.sql
+!talkclass-schema-atual.sql
+
+# Misc
+cls
+System.Net.Sockets.SocketException

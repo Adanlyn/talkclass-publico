@@ -1,0 +1,139 @@
+:root {
+  --feature-card-h: 220px;                 /* desktop: metade no fundo claro */
+  --overlap: calc(var(--feature-card-h) / 2);
+  --feature-icon: 52px;
+}
+
+/* ===== HERO ===== */
+.hero { background: var(--mantine-color-cocoa-9); padding: 40px 0 calc(12px + var(--overlap)); }
+.heroInner { max-width: 760px; margin: 0 auto; text-align: center; }
+.heroHead { margin-top: 24px; }
+.heroTitle { font-size: clamp(28px, 5.5vw, 56px); }
+.subtitle { margin-top: 20px; margin-bottom: 22px; }
+.cta { margin-top: 22px; }
+
+/* ===== FEATURES (desktop) ===== */
+.featuresRow{
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  justify-items: center;
+  transform: translateY(var(--overlap)); /* 50/50 no desktop */
+  position: relative;
+  z-index: 2;
+}
+.featureCard{
+  background: var(--mantine-color-sand-1);
+  border-radius: 12px;
+  padding: 20px 20px 18px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.18);
+  border: 1px solid rgba(0,0,0,.06);
+  width: 100%;
+  max-width: 320px;
+  height: var(--feature-card-h);
+  display: flex; flex-direction: column; align-items: center;
+}
+.featureIcon{
+  width: var(--feature-icon); height: var(--feature-icon);
+  border-radius: 10px; 
+  display: grid; place-items: center; margin: 6px auto 10px;
+}
+.featureTitle { margin-bottom: 6px; text-align: center; }
+.featureDesc  { max-width: 260px; text-align: center; }
+
+/* ===== COMO FUNCIONA ===== */
+.howSection {
+  background: var(--mantine-color-sand-3);
+  margin-top: calc(var(--overlap) * -1);
+  padding: calc(56px + var(--overlap)) 0 56px;
+  position: relative; z-index: 1;
+}
+
+/* grid base + centralização de cada item */
+.howGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  justify-items: center;            /* ← centra cada célula */
+}
+
+/* círculo */
+.howIcon {
+  width: 112px; height: 112px; border-radius: 50%;
+  background: var(--mantine-color-sand-4);
+  display: grid; place-items: center; margin: 0 auto 12px;
+}
+
+/* força textos do bloco a serem pretos */
+.howGrid h1, .howGrid h2, .howGrid h3, .howGrid h4, .howGrid h5, .howGrid h6,
+.howGrid p, .howGrid .howDesc { color: #000 !important; }
+
+/* ===== FOOTER ===== */
+.footer { background: #2b231f; padding: 12px 0; color: #e8dbd2; text-align: center; }
+
+/* ===== TABLET (≤1199px): features centralizados + how central ===== */
+@media (max-width: 1199px){
+  .hero { padding: 40px 0 56px; }
+
+  /* FEATURES: 2 linhas, todos centralizados */
+  .featuresRow{
+    display: flex;                   /* vira flex pra centralizar */
+    flex-wrap: wrap;
+    justify-content: center;         /* ← centraliza a linha */
+    gap: 24px;
+    row-gap: 28px;
+    transform: none;
+    margin-top: 16px;
+  }
+  .featureCard{
+    width: 320px;                    /* 2 por linha + 3º central */
+    max-width: 100%;
+    height: auto;
+    min-height: 190px;
+    padding: 18px;
+  }
+
+  /* COMO FUNCIONA: 2 colunas + 3º item central na linha de baixo */
+  .howGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    justify-items: center;
+  }
+  .howGrid > :last-child {
+    grid-column: 1 / -1;            /* ocupa linha toda */
+    justify-self: center;           /* centraliza o bloco */
+  }
+
+  .howSection{ margin-top: 0; padding-top: 56px; }
+}
+
+/* ===== MOBILE (≤767px): 1 coluna empilhado ===== */
+@media (max-width: 767px){
+  .hero { padding: 32px 0 40px; }
+
+  .featuresRow{
+    display: grid;                   /* volta pra grid 1 col */
+    grid-template-columns: 1fr;
+    gap: 14px;
+    transform: none !important;
+    margin-top: 12px;
+    justify-items: stretch;
+  }
+  .featureCard{
+    width: 100%;
+    height: auto; min-height: 180px; padding: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,.12);
+  }
+  .featureIcon{ width: 44px; height: 44px; margin: 6px auto 8px; }
+  .featureTitle{ text-align: center; }
+  .featureDesc { text-align: center; max-width: none; }
+
+  /* COMO FUNCIONA: 1 coluna, tudo central */
+  .howGrid { grid-template-columns: 1fr; justify-items: center; }
+
+  .howSection{ margin-top: 0 !important; padding-top: 40px; }
+  .heroTitle { font-size: clamp(24px, 7vw, 36px); }
+  .subtitle { margin-top: 12px; margin-bottom: 16px; }
+  .cta { margin-top: 16px; }
+}

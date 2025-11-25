@@ -1,0 +1,512 @@
+/* Layout base */
+.shell {
+  min-height: 100dvh; 
+}
+
+/* Sidebar fixo */
+.sidebar {
+  position: fixed;          
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 260px;
+  background: #1e1a17;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  z-index: 10;              
+}
+
+.brand { margin-bottom: 10px; }
+
+.nav { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.navItem {
+  background: #2b231f;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .15s ease;
+}
+.navItem:hover { background: #3a302b; }
+.navItemActive { background: #3a302b; border-color: rgba(255,255,255,.16); }
+.navFoot { margin-top: auto; }
+
+/* Topo da página */
+.topbar {
+  height: 56px;
+  padding: 0 16px;
+  margin-left: 260px;       
+  background: var(--mantine-color-sand-3);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  display: flex; align-items: center;
+}
+
+/* Conteúdo */
+.content {
+  margin-left: 260px;       
+  padding: 16px 20px 24px;
+  background: var(--mantine-color-body);
+}
+.contentInner { max-width: 1280px; margin: 0 auto; }
+
+/* Cartões e painéis */
+.cardKpi {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  border-radius: 12px;
+}
+.kpiIcon {
+  background: var(--mantine-color-orange-5);
+  color: #fff;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  box-shadow: 0 6px 14px rgba(0,0,0,.16);
+}
+.deltaUp { color: #0a8f44; }
+.deltaDown { color: #d62828; }
+
+.panel {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  border-radius: 12px;
+}
+.chartPlaceholder {
+  height: 280px;
+  border: 1px dashed rgba(0,0,0,.15);
+  border-radius: 10px;
+  display: grid; place-items: center;
+  background: #faf9f7;
+}
+.table th { background: #faf9f7; font-weight: 700; }
+
+/* Rodapé alinhado ao conteúdo */
+.footer {
+  background: #2b231f;
+  padding: 12px 0;
+  color: #e8dbd2;
+  text-align: center;
+  margin-left: 260px;        
+}
+
+/* Ajustes para tablet/mobile */
+@media (max-width: 1024px) {
+  .sidebar { display: none; }     /* oculta a barra fixa no mobile */
+  .topbar,
+  .content,
+  .footer {
+    margin-left: 0;               /* ocupa a tela toda */
+  }
+  .content { padding: 12px; }
+  .burger { display: inline-grid; }
+}
+
+/* Esconde no desktop */
+.burger {
+  display: none !important;
+}
+
+/* Mostra no tablet/mobile */
+@media (max-width: 1024px) {
+  .burger {
+    display: inline-grid !important;
+  }
+}
+
+/* Painéis e cartões KPI */
+.panel {
+  background: var(--mantine-color-body);
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  border-radius: var(--mantine-radius-md);
+  overflow: visible;
+
+}
+
+.cardKpi {
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+.kpiIcon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255,102,0,.12);
+  color: var(--mantine-color-orange-7);
+}
+
+/* Tabela padrão do dashboard */
+.table {
+  --tbl-pad: 10px;
+}
+.table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--mantine-color-body);
+  z-index: 1;
+}
+.table th,
+.table td {
+  padding-block: var(--tbl-pad);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Área dos gráficos com altura fixa */
+.chartBox {
+  position: relative;
+  height: 300px;           
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Ajusta canvas ao container */
+.chartBox canvas {
+  display: block;
+  max-height: 100% !important;
+  width: 100% !important;
+}
+
+/* Alturas menores em cartões compactos */
+@media (max-width: 1024px) {
+  .chartBox { height: 260px; }
+}
+@media (max-width: 640px) {
+  .chartBox { height: 220px; }
+}
+
+/* Alert compacto para não cortar texto */
+.alertCompact {
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.alertCompact :where(p, span, div) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filtersBar {
+  position: static;
+  top: auto;
+  z-index: auto;
+  background: transparent;
+  border-bottom: none;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  width: 100%;
+}
+
+.filtersLeft {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  min-width: 0;
+}
+
+:global(.mantine-Select-dropdown),
+:global(.mantine-Popover-dropdown),
+:global(.mantine-DatePicker-dropdown),
+:global(.mantine-DatesProvider-dropdown) {
+  z-index: 600;
+}
+
+.chartBox { position: relative; height: 300px; width: 100%; }
+.chartBox canvas { display: block; max-height: 100% !important; width: 100% !important; }
+@media (max-width:1024px){ .chartBox{ height:260px; } }
+@media (max-width:640px){ .chartBox{ height:220px; } }
+
+.filtersRight {
+  margin-left: auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .filtersBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filtersLeft,
+  .filtersRight {
+    width: 100%;
+  }
+
+  .filtersRight {
+    margin-left: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+.filtersMobileTrigger {
+  width: 100%;
+  margin-bottom: 12px;
+}
+.filtersDrawerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.filtersDrawerContent :where(.mantine-InputWrapper-root, .mantine-Select-root, .mantine-NumberInput-root) {
+  width: 100%;
+}
+.filtersDrawerContent :where(.mantine-Group-root) {
+  width: 100%;
+}
+.filtersRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+/* Toolbars e tabelas com rolagem lateral */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.toolbar > * {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.toolbarSpace {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.toolbarSpace > * {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.toolbarItemAuto {
+  flex: 0 0 auto;
+}
+.toolbarActions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.filtersGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.filtersGrid :global(.mantine-InputWrapper-root) {
+  margin-bottom: 0;
+}
+@media (min-width: 640px) {
+  .filtersGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .filtersGrid {
+    gap: 12px;
+  }
+}
+.formTight {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.formTight :global(.mantine-InputWrapper-root) {
+  margin-bottom: 4px;
+}
+.formTight :global(.mantine-Input-label) {
+  margin-bottom: 4px;
+}
+@media (min-width: 1024px) {
+  .formTight {
+    gap: 12px;
+  }
+  .formTight :global(.mantine-InputWrapper-root) {
+    margin-bottom: 6px;
+  }
+  .formTight :global(.mantine-Input-label) {
+    margin-bottom: 6px;
+  }
+}
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 4px;
+}
+.tableMin {
+  min-width: 760px;
+}
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.cardTitle {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.cardMeta {
+  color: #6b7280;
+  font-size: 13px;
+}
+.cardActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.cardGrid > :global(.mantine-Paper-root) {
+  padding: 12px;
+}
+@media (max-width: 640px) {
+  .panel {
+    padding: 12px !important;
+  }
+}
+
+/* Alturas padronizadas dos inputs na barra */
+.filtersBar :where(.mantine-InputWrapper-root) { margin: 0; }
+.filtersBar :where(.mantine-Input-input,
+                   .mantine-DatePickerInput-input) { height: 38px; }
+.filtersBar :where(.mantine-Button-root) { height: 38px; }
+
+/* SegmentedControl na mesma altura */
+.filtersBar :where(.mantine-SegmentedControl-root) { height: 38px; }
+.filtersBar :where(.mantine-SegmentedControl-control) { height: 38px; }
+
+/* Checkbox alinhado ao centro */
+.filtersBar :where(.mantine-Checkbox-root) {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Larguras mínimas para estabilidade */
+.filtersBar .min-date { min-width: 320px; }
+.filtersBar .min-select { min-width: 220px; }
+
+.chartTall {
+  height: 380px; 
+}
+
+/* Seção do assistente */
+.assistantLayout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 960px) {
+  .assistantLayout {
+    grid-template-columns: 1fr;
+  }
+  .toolbar {
+    align-items: stretch;
+  }
+  .toolbar,
+  .toolbarSpace {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .toolbar > *,
+  .toolbarSpace > * {
+    width: 100%;
+  }
+  .toolbarActions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .tableMin {
+    min-width: 640px;
+  }
+  .toolbarItemAuto {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+}
+
+@media (min-width: 640px) {
+  .assistantSend {
+    width: auto;
+    min-width: 150px;
+  }
+}
+.assistantChatBox {
+  border: 1px solid rgba(0,0,0,.08);
+  background: #fdfbf8;
+  border-radius: 12px;
+  padding: 12px;
+  max-height: 520px;
+  min-height: 320px;
+  overflow-y: auto;
+}
+.msgRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.msgIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #f4ece6;
+  color: #b45309;
+}
+.msgIcon[data-role="user"] {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+.botBubble,
+.userBubble {
+  padding: 10px 12px;
+  border-radius: 12px;
+  max-width: 100%;
+  box-shadow: 0 4px 14px rgba(0,0,0,.05);
+}
+.botBubble {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.userBubble {
+  background: linear-gradient(135deg, #ffedd5, #fff7ed);
+  border: 1px solid rgba(249,115,22,.35);
+}
+.assistantTextarea {
+  flex: 1;
+  width: 100%;
+}
+.assistantSend {
+  align-self: stretch;
+  width: 100%;
+}
+.assistantActions {
+  align-items: stretch;
+}
+
+@media (min-width: 640px) {
+  .assistantSend {
+    width: auto;
+    min-width: 150px;
+  }
+}

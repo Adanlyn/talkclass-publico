@@ -1,0 +1,37 @@
+.page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--mantine-color-sand-3);
+}
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 12px;
+}
+.footer {
+  background: #2b231f;
+  padding: 12px 0;
+  color: #e8dbd2;
+  text-align: center;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.title {
+  color: var(--mantine-color-cocoa-9);
+  font-weight: 800;
+}
+
+/* Aviso */
+.notice {
+  color: var(--mantine-color-cocoa-9);
+  font-weight: 500;
+  max-width: 520px;
+  margin: 0 auto;
+}

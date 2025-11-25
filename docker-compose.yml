@@ -1,0 +1,3 @@
+name: talkclass-app
+include:
+  - docker-compose.dev.yml

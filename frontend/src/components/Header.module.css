@@ -1,0 +1,78 @@
+.header {
+  background: var(--mantine-color-cocoa-9);
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* belt & suspenders: filhos também sem sombra/borda */
+.header * {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* tira a linha padrão das Tabs */
+
+
+/* se tiver um wrapper das tabs, dá 1px pra cobrir qualquer hairline */
+.tabsWrap { margin-top: -1px; }
+
+.heroTop,
+main > section:first-child,
+.mantine-Paper-root:first-child {
+  margin-top: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
+
+/* se tiver Tabs logo abaixo, o Mantine coloca linha por padrão */
+.mantine-Tabs-list {
+  border-bottom: 0 !important;   /* só se a linha das abas estiver colando no header */
+}
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: var(--mantine-spacing-xl);
+}
+
+.navLink {
+  text-decoration: none;
+  color: white;
+  padding: 6px 10px;          /* área clicável maior */
+  border-radius: 8px;
+  transition: color .15s ease;
+  display: inline-block;
+}
+
+.navLink:hover {
+  color: var(--mantine-color-orange-6);
+}
+
+/* Drawer (mobile) */
+.drawerLink {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 10px 12px;
+  transition: color .15s ease;
+  border-radius: 10px;
+}
+
+.drawerLink:hover {
+  color: var(--mantine-color-orange-6);
+}
+@media (max-width: 62rem) {
+  .header {
+    position: relative;
+    transform: translateZ(0);           /* evita costura subpixel */
+    backface-visibility: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -1px;                       /* cobre a linha */
+    height: 1px;
+    background: var(--mantine-color-cocoa-9);
+    pointer-events: none;
+  }
+}
